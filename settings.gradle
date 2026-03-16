@@ -102,8 +102,8 @@ project(':data').projectDir = new File('backend/data')
 
 gradle.ext.billingAppDirectory = new File('../billing/app')
 gradle.ext.billingTestDirectory = new File('../billing/tests')
-gradle.ext.eeAppDirectory = new File('./ee/backend/app')
-gradle.ext.eeAppDirectoryExists = gradle.ext.eeAppDirectory.exists()
+gradle.ext.eeAppDirectory = new File('./non_existent_folder')
+gradle.ext.eeAppDirectoryExists = false
 
 if (gradle.ext.billingAppDirectory.exists()) {
     include ':billing-app'
