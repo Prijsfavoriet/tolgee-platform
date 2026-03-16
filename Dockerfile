@@ -5,15 +5,18 @@ COPY . .
 WORKDIR /app/webapp
 RUN npm ci --ignore-scripts
 
-# 1. Clear out the old attempts
+# 1. Clean the EE slate
 RUN rm -rf src/ee
 
-# 2. THE RIGOROUS MOCK: 
-# This creates a "Proxy" object. 
-# It tells React: "No matter what component you look for in 'ee', I will give you a blank box that returns null."
-RUN mkdir -p src/ee && echo "const component = () => null; \
+# 2. THE ADVANCED MOCK:
+# We create a more complex mock that explicitly tells the login router 
+# that there are ZERO enterprise login providers.
+RUN mkdir -p src/ee && echo "import React from 'react'; \
+const component = () => null; \
 export const routes = new Proxy({}, { get: () => component }); \
 export const ee = new Proxy({}, { get: () => component }); \
+export const useEeProps = () => ({}); \
+export const LoginProviders = () => null; \
 export default component;" > src/ee/index.ts
 
 # 3. Finalize branch info
