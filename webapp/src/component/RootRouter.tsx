@@ -7,7 +7,6 @@ import { UserSettingsRouter } from 'tg.views/userSettings/UserSettingsRouter';
 import { OrganizationsRouter } from 'tg.views/organizations/OrganizationsRouter';
 import { AdministrationView } from 'tg.views/administration/AdministrationView';
 import { RootView } from 'tg.views/RootView';
-import { routes } from 'tg.ee';
 
 import { PrivateRoute } from './common/PrivateRoute';
 import { OrganizationBillingRedirect } from './security/OrganizationBillingRedirect';
@@ -110,8 +109,6 @@ export const RootRouter = () => {
           <HelpMenu />
         </RequirePreferredOrganization>
       </Switch>
-
-      <routes.Root />
     </>
   );
 };
