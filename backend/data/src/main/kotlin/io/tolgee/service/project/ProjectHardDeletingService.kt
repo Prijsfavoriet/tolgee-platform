@@ -96,8 +96,6 @@ class ProjectHardDeletingService(
 
       mtServiceConfigService.deleteAllByProjectId(project.id)
 
-      promptService.deleteAllByProjectId(project.id)
-
       aiPlaygroundResultService.deleteResultsByProject(project.id)
 
       labelService.deleteLabelsByProjectId(project.id)
