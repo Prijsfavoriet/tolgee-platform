@@ -1,11 +1,20 @@
 # --- STAGE 1: Build the Webapp (Frontend) ---
 FROM node:20-alpine AS webapp-build
 WORKDIR /webapp
+
+# Copy package files
 COPY webapp/package.json webapp/package-lock.json ./
-RUN npm ci
+
+# CRITICAL FIX: Add --ignore-scripts to skip the broken "prepare" tasks
+RUN npm ci --ignore-scripts
+
+# Now copy the rest of the webapp source
 COPY webapp .
-# BYPASS: Remove Enterprise Frontend logic
+
+# Manually delete the EE folder if it was copied
 RUN rm -rf src/ee
+
+# Run the build (using the flag to skip scripts if needed)
 RUN npm run build:production
 
 # --- STAGE 2: Build the Server (Backend) ---
