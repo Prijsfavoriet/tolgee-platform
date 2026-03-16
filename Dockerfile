@@ -33,7 +33,7 @@ WORKDIR /app
 RUN apk --no-cache add curl
 
 # 6. Copy assets from previous stages
-COPY --from=webapp-build /webapp/dist /app/public
+COPY --from=webapp-build /app/webapp/dist /app/public
 COPY --from=server-build /server/server/build/libs/*.jar /app/tolgee.jar
 
 ENV SPRING_PROFILES_ACTIVE=prod
