@@ -5,13 +5,17 @@ COPY . .
 WORKDIR /app/webapp
 RUN npm ci --ignore-scripts
 
-# 1. Ensure the real EE folder is gone
+# 1. Physically remove the Enterprise UI code
 RUN rm -rf src/ee
 
-# 2. THE FIX: Create a dummy index.ts to satisfy React Error #152
-RUN mkdir -p src/ee && echo "export const ee = null; export default function MockEE() { return null; }" > src/ee/index.ts
+# 2. THE CRITICAL FIX: Create a mock index.ts that returns null instead of undefined.
+# This prevents "Minified React error #152"
+RUN mkdir -p src/ee && echo "export const routes = { Project: () => null }; export const ee = null; export default function MockEE() { return null; }" > src/ee/index.ts
 
+# 3. Mock the branch info required by index.tsx
 RUN echo '{"branchName": "main", "hash": "self-hosted"}' > src/branch.json
+
+# 4. Run the production build
 RUN npm run build
 
 # --- STAGE 2: Build the Server (Backend) ---
