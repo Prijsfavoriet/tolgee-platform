@@ -13,7 +13,7 @@ RUN npm ci --ignore-scripts
 RUN rm -rf src/ee
 
 # 4. FIX: Create the missing branch.json file so the build doesn't crash
-RUN echo '{"branch": "main", "hash": "self-hosted"}' > src/branch.json
+RUN echo '{"branchName": "main", "hash": "self-hosted"}' > src/branch.json
 
 # 5. Run the build
 RUN npm run build
