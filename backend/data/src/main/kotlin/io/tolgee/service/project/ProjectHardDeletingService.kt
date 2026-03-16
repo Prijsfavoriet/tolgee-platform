@@ -51,7 +51,6 @@ class ProjectHardDeletingService(
   @Lazy
   private val self: ProjectHardDeletingService,
   private val aiPlaygroundResultService: AiPlaygroundResultService,
-  private val promptService: PromptService,
   private val importSettingsService: ImportSettingsService,
   private val glossaryCleanupService: GlossaryCleanupService,
   private val labelService: LabelService,
