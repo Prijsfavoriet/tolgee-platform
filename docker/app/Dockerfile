@@ -20,7 +20,7 @@ ENV HEALTHCHECK_PORT=8080 \
 COPY BOOT-INF/lib /app/lib
 COPY META-INF /app/META-INF
 COPY BOOT-INF/classes /app
-COPY --chmod=755 cmd.sh /app
+COPY --chmod=755 docker/app/cmd.sh /app
 
 # Download OpenTelemetry Java agent for distributed tracing
 # When OTEL_JAVAAGENT_ENABLED=true, cmd.sh will use this agent
