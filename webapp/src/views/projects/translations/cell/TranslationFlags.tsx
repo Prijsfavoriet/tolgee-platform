@@ -9,7 +9,6 @@ import { AutoTranslationIcon } from 'tg.component/AutoTranslationIcon';
 import { TranslationFlagIcon } from 'tg.component/TranslationFlagIcon';
 
 import { useTranslationsActions } from '../context/TranslationsContext';
-import { TranslationTaskIndicator } from 'tg.ee';
 import { CloseButton } from 'tg.component/common/buttons/CloseButton';
 import React from 'react';
 import { useProjectPermissions } from 'tg.hooks/useProjectPermissions';
@@ -121,7 +120,7 @@ export const TranslationFlags: React.FC<Props> = ({
 
   return (
     <StyledWrapper className={className}>
-      {task && <TranslationTaskIndicator task={task} />}
+      {task && <></>}
       {translation?.auto && (
         <CloseButton
           data-cy="translations-auto-translated-clear-button"

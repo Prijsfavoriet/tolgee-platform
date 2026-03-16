@@ -10,7 +10,6 @@ import {
 import { MenuItem } from '@mui/material';
 import React, { FC } from 'react';
 import { createAdder } from 'tg.fixtures/pluginAdder';
-import { useAddUserMenuItems } from 'tg.ee';
 
 export const UserMenuItems: FC<{ onClose: () => void }> = ({ onClose }) => {
   const location = useLocation();
@@ -19,8 +18,6 @@ export const UserMenuItems: FC<{ onClose: () => void }> = ({ onClose }) => {
   const config = useConfig();
   const user = useUser();
   const isEmailVerified = useIsEmailVerified();
-
-  const addEeItems = useAddUserMenuItems();
 
   const baseItems = [
     {
@@ -69,17 +66,6 @@ export const UserMenuItems: FC<{ onClose: () => void }> = ({ onClose }) => {
       ),
     },
   ] satisfies UserMenuItem[];
-
-  const items = addEeItems(baseItems);
-
-  return (
-    <>
-      {items.map(({ Component, enabled }, index) => {
-        if (!enabled) return null;
-        return <Component key={index} onClose={onClose} />;
-      })}
-    </>
-  );
 };
 
 type UserMenuItem = {

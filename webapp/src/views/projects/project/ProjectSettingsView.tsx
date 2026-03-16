@@ -9,7 +9,6 @@ import { useProject } from 'tg.hooks/useProject';
 import { BaseProjectView } from '../BaseProjectView';
 import { ProjectSettingsGeneral } from './ProjectSettingsGeneral';
 import { ProjectSettingsAdvanced } from './ProjectSettingsAdvanced';
-import { useAddProjectSettingsTabs } from 'tg.ee';
 import { useProjectPermissions } from 'tg.hooks/useProjectPermissions';
 import { useReportEvent } from 'tg.hooks/useReportEvent';
 
@@ -62,7 +61,7 @@ export const ProjectSettingsView = () => {
     },
   ] as ProjectSettingsTab[];
 
-  tabs = useAddProjectSettingsTabs(project.id)(tabs);
+  tabs = tabs;
 
   const matchedTab = tabs.find((t) => t.routeMatch?.isExact);
   if (matchedTab && !matchedTab.enabled) {

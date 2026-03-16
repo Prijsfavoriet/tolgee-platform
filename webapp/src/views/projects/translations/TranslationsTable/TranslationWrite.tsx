@@ -13,7 +13,6 @@ import { useMissingPlaceholders } from '../cell/useMissingPlaceholders';
 import { TranslationVisual } from '../translationVisual/TranslationVisual';
 import { ControlsEditorReadOnly } from '../cell/ControlsEditorReadOnly';
 import { useBaseTranslation } from '../useBaseTranslation';
-import { TaskInfoMessage } from 'tg.ee';
 
 const StyledContainer = styled('div')`
   display: grid;
@@ -139,10 +138,7 @@ export const TranslationWrite: React.FC<Props> = ({ tools }) => {
 
       <StyledBottom>
         {editEnabled && (
-          <TaskInfoMessage
-            tasks={translationTasks}
-            currentTask={prefilteredTask}
-          />
+          <></>
         )}
         <StyledPlaceholdersAndControls>
           {Boolean(missingPlaceholders.length) && (

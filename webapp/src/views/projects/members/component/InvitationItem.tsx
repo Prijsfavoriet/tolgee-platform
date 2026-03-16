@@ -2,7 +2,6 @@ import { T, useTranslate } from '@tolgee/react';
 import { Box, IconButton, styled, Tooltip } from '@mui/material';
 import { XClose, Link02 } from '@untitled-ui/icons-react';
 
-import { AgencyLabel } from 'tg.ee';
 import { components } from 'tg.service/apiSchema.generated';
 import { useApiMutation } from 'tg.service/http/useQueryApi';
 import { LINKS, PARAMS } from 'tg.constants/links';
@@ -94,7 +93,7 @@ export const InvitationItem: React.FC<Props> = ({ invitation }) => {
         {invitation.permission.agency && (
           <Tooltip title={t('invite_user_agency_tooltip')}>
             <span>
-              <AgencyLabel agency={invitation.permission.agency} />
+              <></>
             </span>
           </Tooltip>
         )}

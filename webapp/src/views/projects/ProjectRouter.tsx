@@ -19,7 +19,6 @@ import { DashboardView } from './dashboard/DashboardView';
 import { WebsocketPreview } from './WebsocketPreview';
 import { DeveloperView } from './developer/DeveloperView';
 import { TaskRedirect } from './TaskRedirect';
-import { routes } from 'tg.ee';
 import { IntegrateView } from './integrate/IntegrateView';
 import { AiView } from './ai/AiView';
 import { BRANCH_ROUTES } from '../../branching/branchRoutes';
@@ -125,7 +124,7 @@ export const ProjectRouter = () => {
           <TrashView />
         </Route>
       </Switch>
-      <routes.Project />
+      <></>
     </ProjectContext>
   );
 };

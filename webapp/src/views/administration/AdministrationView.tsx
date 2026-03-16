@@ -5,7 +5,6 @@ import { LINKS } from 'tg.constants/links';
 import { AdministrationOrganizations } from './AdministrationOrganizations';
 import { AdministrationUsers } from './AdministrationUsers';
 
-import { routes } from 'tg.ee';
 import { useUrlSearchState } from 'tg.hooks/useUrlSearchState';
 
 export const AdministrationView = () => {
@@ -27,7 +26,6 @@ export const AdministrationView = () => {
           />
         </PrivateRoute>
       </Switch>
-      <routes.Administration />
     </>
   );
 };

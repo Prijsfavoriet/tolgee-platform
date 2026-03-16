@@ -19,7 +19,6 @@ import { ThemeItem } from './ThemeItem';
 import { LanguageItem } from './LanguageItem';
 import { useGlobalActions } from 'tg.globalContext/GlobalContext';
 import { UserMenuItems } from './UserMenuItems';
-import { billingMenuItems } from 'tg.ee';
 
 type OrganizationModel = components['schemas']['OrganizationModel'];
 
@@ -151,10 +150,6 @@ export const UserPresentAvatarMenu: React.FC = () => {
               >
                 {item.label}
               </MenuItem>
-            ))}
-
-            {billingMenuItems.map((Item, index) => (
-              <Item key={index} onClose={handleClose} />
             ))}
 
             <OrganizationSwitch

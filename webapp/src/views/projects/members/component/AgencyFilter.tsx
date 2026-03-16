@@ -3,7 +3,6 @@ import { useTranslate } from '@tolgee/react';
 import { Checkbox, MenuItem, styled } from '@mui/material';
 
 import { useBillingApiQuery } from 'tg.service/http/useQueryApi';
-import { AgencyLabel } from 'tg.ee';
 import { Select } from 'tg.component/common/Select';
 
 const StyledPlaceholder = styled('span')`
@@ -62,7 +61,7 @@ export const AgencyFilter = ({ value, onChange }: Props) => {
             (value as number[])
               .map((aId) => data?.find((a) => a.id === aId))
               .filter(Boolean)
-              .map((a) => <AgencyLabel key={a!.id} agency={a!} />)
+              .map((a) => <></>)
           ) : (
             <StyledPlaceholder>{t('filter_by_agency')}</StyledPlaceholder>
           )}
@@ -81,7 +80,7 @@ export const AgencyFilter = ({ value, onChange }: Props) => {
             edge="start"
             disableRipple
           />
-          <AgencyLabel agency={agency} />
+          <></>
         </MenuItem>
       ))}
     </Select>

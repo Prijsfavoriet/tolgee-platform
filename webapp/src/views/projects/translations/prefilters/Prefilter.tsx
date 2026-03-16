@@ -1,4 +1,4 @@
-import { PrefilterTask } from 'tg.ee';
+
 import { PrefilterActivity } from './PrefilterActivity';
 import { PrefilterFailedJob } from './PrefilterFailedJob';
 import { PrefilterType } from './usePrefilter';
@@ -13,7 +13,7 @@ export const Prefilter = ({ prefilter }: Props) => {
   } else if (prefilter?.failedJob) {
     return <PrefilterFailedJob jobId={prefilter.failedJob} />;
   } else if (prefilter?.task) {
-    return <PrefilterTask taskNumber={prefilter.task} />;
+    return <></>;
   }
   return null;
 };

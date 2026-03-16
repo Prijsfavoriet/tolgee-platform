@@ -12,7 +12,6 @@ import {
   useGlobalActions,
   useGlobalContext,
 } from 'tg.globalContext/GlobalContext';
-import { TranslationsTaskDetail, TaskAllDonePlaceholder } from 'tg.ee';
 import { EmptyState } from 'tg.component/common/EmptyState';
 
 import {
@@ -116,10 +115,7 @@ export const Translations = () => {
       </EmptyListMessage>
     ) : prefilter?.task && prefilter.taskFilterNotDone ? (
       <EmptyState loading={isLoading || isFetching}>
-        <TaskAllDonePlaceholder
-          taskNumber={prefilter.task}
-          projectId={project.id}
-        />
+        <></>
       </EmptyState>
     ) : (
       <EmptyListMessage
@@ -180,7 +176,7 @@ export const Translations = () => {
         )}
       </StyledContainer>
       <TranslationsToolbar />
-      <TranslationsTaskDetail />
+      <></>
     </BaseProjectView>
   );
 };

@@ -14,7 +14,6 @@ import { OperationExportTranslations } from './OperationExportTranslations';
 import { FC } from 'react';
 import { BatchActions, OperationProps } from './types';
 import { createMultiAdder } from 'tg.fixtures/pluginAdder';
-import { useAddBatchOperations as useAddEeBatchOperations } from 'tg.ee';
 
 export type BatchOperation = {
   id: BatchActions;
@@ -123,9 +122,7 @@ export const useBatchOperations = () => {
     },
   ];
 
-  const addEeBatchOperations = useAddEeBatchOperations();
-
-  const operations = addEeBatchOperations(publicOperations);
+  const operations = publicOperations;
 
   function findOperation(id?: string) {
     return operations.find((o) => o.id === id);

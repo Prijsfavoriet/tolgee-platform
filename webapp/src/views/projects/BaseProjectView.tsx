@@ -9,7 +9,6 @@ import { OrganizationSwitch } from 'tg.component/organizationSwitch/Organization
 import { LINKS, PARAMS } from 'tg.constants/links';
 import { useProject } from 'tg.hooks/useProject';
 import { BatchOperationsSummary } from './translations/BatchOperations/OperationsSummary/OperationsSummary';
-import { CriticalUsageCircle } from 'tg.ee';
 import { ProjectPage } from './ProjectPage';
 import { GlobalBranchSelector } from 'tg.component/branching/GlobalBranchSelector';
 import { useBranchLinks } from 'tg.component/branching/useBranchLinks';
@@ -62,7 +61,7 @@ export const BaseProjectView: React.FC<Props> = ({
         navigationRight={
           <Box display="grid" gridAutoFlow="column" gap={1}>
             <BatchOperationsSummary />
-            <CriticalUsageCircle />
+            <></>
           </Box>
         }
       />

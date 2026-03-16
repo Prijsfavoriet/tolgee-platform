@@ -15,7 +15,6 @@ import {
   useIsAdminOrSupporter,
   usePreferredOrganization,
 } from 'tg.globalContext/helpers';
-import { CriticalUsageCircle } from 'tg.ee';
 
 type OrganizationModel = components['schemas']['OrganizationModel'];
 
@@ -143,7 +142,7 @@ export const BaseOrganizationSettingsView: React.FC<Props> = ({
       {...otherProps}
       loading={organizationLoadable.isLoading || loading}
       navigation={[...navigationPrefix, ...(navigation || [])]}
-      navigationRight={<CriticalUsageCircle />}
+      navigationRight={<></>}
       menuItems={menuItems}
       hideChildrenOnLoading={false}
     >

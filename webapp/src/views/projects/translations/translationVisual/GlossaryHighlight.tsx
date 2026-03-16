@@ -1,6 +1,5 @@
 import { styled, Tooltip } from '@mui/material';
 import { TooltipCard } from 'tg.component/common/TooltipCard';
-import { GlossaryTermPreview } from 'tg.ee';
 import { components } from 'tg.service/apiSchema.generated';
 
 type GlossaryTermModel = components['schemas']['GlossaryTermModel'];
@@ -30,12 +29,8 @@ export const GlossaryHighlight = ({
       enterDelay={200}
       components={{ Tooltip: TooltipCard }}
       title={
-        <GlossaryTermPreview
-          term={term}
-          languageTag={languageTag}
-          targetLanguageTag={targetLanguageTag}
-          standalone
-        />
+        <></>
+         
       }
     >
       <StyledHighlight data-cy="glossary-term-highlight">

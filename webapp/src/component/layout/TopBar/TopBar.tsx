@@ -14,7 +14,6 @@ import { LanguageMenu } from 'tg.component/layout/TopBar/LanguageMenu';
 import { TopBarAnnouncements } from './announcements/TopBarAnnouncements';
 import { TopBarTestClockInfo } from './TopBarTestClockInfo';
 import React, { FC } from 'react';
-import { TrialChip } from 'tg.ee';
 import { NotificationsTopBarButton } from 'tg.component/layout/Notifications/NotificationsTopBarButton';
 
 export const StyledAppBar = styled(AppBar)(
@@ -108,7 +107,6 @@ export const TopBar: FC<Props> = ({ hideQuickStart, ...announcementProps }) => {
                 <StyledLogoTitle variant="h5" color="inherit">
                   {config.appName}
                 </StyledLogoTitle>
-                <TrialChip />
                 {config.showVersion && (
                   <StyledVersion variant="body1">
                     {config.version}

@@ -1,7 +1,6 @@
-import { useState } from 'react';
+
 import { useProject } from 'tg.hooks/useProject';
 import { User } from 'tg.component/UserAccount';
-import { OrderTranslationsDialog } from 'tg.ee';
 
 import { OperationProps } from './types';
 import { BatchOperationsSubmit } from './components/BatchOperationsSubmit';
@@ -15,7 +14,6 @@ type Props = OperationProps;
 export const OperationOrderTranslation = ({ disabled, onFinished }: Props) => {
   const project = useProject();
   const branch = useBranchFromUrlPath();
-  const [dialogOpen, setDialogOpen] = useState(true);
 
   const allLanguages = useTranslationsSelector((c) => c.languages) ?? [];
   const selection = useTranslationsSelector((c) => c.selection);
@@ -37,22 +35,9 @@ export const OperationOrderTranslation = ({ disabled, onFinished }: Props) => {
     <OperationContainer>
       <BatchOperationsSubmit
         disabled={disabled}
-        onClick={() => setDialogOpen(true)}
+        onClick={() => {}}
       />
-      <OrderTranslationsDialog
-        key={JSON.stringify(selectedLanguages)}
-        open={dialogOpen}
-        onClose={() => setDialogOpen(false)}
-        initialValues={{
-          selection,
-          languageAssignees,
-          languages: selectedLanguages,
-        }}
-        allLanguages={allLanguages}
-        projectId={project.id}
-        onFinished={onFinished}
-        branch={branch}
-      />
+      <></>
     </OperationContainer>
   );
 };

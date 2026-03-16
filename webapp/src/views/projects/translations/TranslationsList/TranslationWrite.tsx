@@ -4,7 +4,6 @@ import { Placeholder } from '@tginternal/editor';
 import { useTranslate } from '@tolgee/react';
 import { HelpCircle } from '@untitled-ui/icons-react';
 
-import { TaskInfoMessage } from 'tg.ee';
 import { ControlsEditorMain } from '../cell/editorMainActions/ControlsEditorMain';
 import { ControlsEditorSmall } from '../cell/ControlsEditorSmall';
 import { useTranslationsSelector } from '../context/TranslationsContext';
@@ -199,7 +198,7 @@ export const TranslationWrite: React.FC<Props> = ({ tools }) => {
       <StyledBottom onMouseDown={(e) => e.preventDefault()}>
         {editEnabled ? (
           <>
-            <TaskInfoMessage tasks={tasks} currentTask={prefilteredTask} />
+            <></>
             <StyledControls>
               <Box display="flex" alignItems="center" gap="8px">
                 <Tooltip title={t('translation_format_help')}>

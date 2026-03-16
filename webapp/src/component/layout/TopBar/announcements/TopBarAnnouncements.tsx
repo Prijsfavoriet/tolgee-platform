@@ -2,7 +2,6 @@ import React, { FC, useMemo } from 'react';
 import { Box } from '@mui/material';
 import { AdministrationAccessAnnouncement } from './AdministrationAccessAnnouncement';
 import { DebuggingCustomerAccountAnnouncement } from './DebuggingCustomerAccountAnnouncement';
-import { TrialAnnouncement } from 'tg.ee';
 
 type TopBarAnnouncementsProps = {
   isAdminAccess?: boolean;
@@ -21,8 +20,6 @@ export const TopBarAnnouncements: FC<TopBarAnnouncementsProps> = ({
     if (isDebuggingCustomerAccount) {
       return <DebuggingCustomerAccountAnnouncement />;
     }
-
-    return <TrialAnnouncement />;
   }
 
   const contents = useMemo(

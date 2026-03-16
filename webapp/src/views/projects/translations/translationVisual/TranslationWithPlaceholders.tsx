@@ -9,8 +9,6 @@ import { styled, useTheme } from '@mui/material';
 import { getLanguageDirection } from 'tg.fixtures/getLanguageDirection';
 import { placeholderToElement } from './placeholderToElement';
 import { useProject } from 'tg.hooks/useProject';
-import { useGlossaryTermHighlights } from 'tg.ee';
-import { GlossaryTermHighlightModel } from '../../../../eeSetup/EeModuleType';
 import { GlossaryHighlight } from 'tg.views/projects/translations/translationVisual/GlossaryHighlight';
 
 const StyledWrapper = styled('div')`
@@ -29,7 +27,7 @@ type Props = {
 type Modifier = {
   position: Position;
   placeholder?: Placeholder;
-  highlight?: GlossaryTermHighlightModel;
+  highlight?: any;
 };
 
 function isOverlapping(a: Position, b: Position): boolean {
@@ -38,7 +36,7 @@ function isOverlapping(a: Position, b: Position): boolean {
 
 function sortModifiers(
   placeholders: Placeholder[],
-  highlights: GlossaryTermHighlightModel[]
+  highlights: any[]
 ): Modifier[] {
   let modifiers: Modifier[] = placeholders.map((placeholder) => ({
     position: placeholder.position,
@@ -99,11 +97,7 @@ export const TranslationWithPlaceholders = ({
     return getPlaceholders(content || '', nested) || [];
   }, [content, nested]);
 
-  const glossaryTerms = useGlossaryTermHighlights({
-    text: content || '',
-    languageTag: locale,
-    enabled: showHighlights ?? false,
-  });
+  const glossaryTerms = [];
 
   const modifiers = sortModifiers(placeholders, glossaryTerms);
 

@@ -5,7 +5,6 @@ import { useRouteMatch } from 'react-router-dom';
 
 import { getPermissionTools } from 'tg.fixtures/getPermissionTools';
 import { createAdder } from 'tg.fixtures/pluginAdder';
-import { useAddDeveloperViewItems } from 'tg.ee';
 
 import { CdList } from './contentDelivery/CdList';
 
@@ -33,11 +32,7 @@ export const useDeveloperViewItems = () => {
     },
   ];
 
-  const addDeveloperViewItems = useAddDeveloperViewItems();
-
-  const items = addDeveloperViewItems(baseItems);
-
-  const value = items
+  const value = baseItems
     .map((item) => {
       const routerMatch = useRouteMatch(item.link.template);
       if (!routerMatch) {
@@ -48,10 +43,10 @@ export const useDeveloperViewItems = () => {
     })
     .find((v) => v[1])?.[0] as string | undefined;
 
-  const ActiveComponent = items.find((item) => item.value === value)?.component;
+  const ActiveComponent = baseItems.find((item) => item.value === value)?.component;
 
   return {
-    items,
+    items: baseItems,
     value,
     ActiveComponent,
   };

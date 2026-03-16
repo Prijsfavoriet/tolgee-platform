@@ -4,7 +4,6 @@ import { useTranslate } from '@tolgee/react';
 import { useRouteMatch } from 'react-router-dom';
 
 import { getPermissionTools } from 'tg.fixtures/getPermissionTools';
-import { AiContextData, AiPromptsList } from 'tg.ee';
 
 export const useAiViewItems = () => {
   const { t } = useTranslate();
@@ -19,7 +18,7 @@ export const useAiViewItems = () => {
       },
       link: LINKS.PROJECT_AI,
       requireExactMath: true,
-      component: AiPromptsList,
+      component: <></>,
     },
     {
       value: 'context-data',
@@ -30,7 +29,7 @@ export const useAiViewItems = () => {
       },
       link: LINKS.PROJECT_CONTEXT_DATA,
       requireExactMath: true,
-      component: AiContextData,
+      component: <></>,
     },
   ];
 

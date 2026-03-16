@@ -3,7 +3,6 @@ import { useTranslate } from '@tolgee/react';
 import { BaseViewProps } from 'tg.component/layout/BaseView';
 import { Link, LINKS } from 'tg.constants/links';
 
-import { useAddAdministrationMenuItems } from 'tg.ee';
 import { NavigationItem } from 'tg.component/navigation/Navigation';
 import { BaseSettingsView } from 'tg.component/layout/BaseSettingsView/BaseSettingsView';
 import { createAdder } from 'tg.fixtures/pluginAdder';
@@ -17,8 +16,6 @@ export const BaseAdministrationView: React.FC<Props> = ({
   ...otherProps
 }) => {
   const { t } = useTranslate();
-
-  const addItems = useAddAdministrationMenuItems();
 
   const baseItems: AdministrationMenuItem[] = [
     {
@@ -35,8 +32,6 @@ export const BaseAdministrationView: React.FC<Props> = ({
     },
   ];
 
-  const menuItems = addItems(baseItems);
-
   const navigationPrefix: NavigationItem[] = [
     [t('administration_title'), LINKS.ADMINISTRATION_ORGANIZATIONS.build()],
   ];
@@ -45,12 +40,6 @@ export const BaseAdministrationView: React.FC<Props> = ({
     <BaseSettingsView
       {...otherProps}
       navigation={[...navigationPrefix, ...(navigation || [])]}
-      menuItems={menuItems
-        .filter((i) => i.condition())
-        .map((item) => ({
-          label: item.label,
-          link: item.link.build(),
-        }))}
       hideChildrenOnLoading={false}
       maxWidth="normal"
     >

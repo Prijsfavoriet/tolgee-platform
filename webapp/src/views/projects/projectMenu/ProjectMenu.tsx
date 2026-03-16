@@ -21,7 +21,6 @@ import { useGlobalContext } from 'tg.globalContext/GlobalContext';
 import { Integration, Stars } from 'tg.component/CustomIcons';
 import { FC } from 'react';
 import { createAdder } from 'tg.fixtures/pluginAdder';
-import { useAddProjectMenuItems } from 'tg.ee';
 import { useProject } from 'tg.hooks/useProject';
 import { useBranchLinks } from 'tg.component/branching/useBranchLinks';
 
@@ -154,9 +153,7 @@ export const ProjectMenu = () => {
     },
   ] satisfies ProjectMenuItem[];
 
-  const addEeItems = useAddProjectMenuItems();
-
-  const items = addEeItems(baseItems);
+  const items = baseItems;
 
   return (
     <SideMenu>
