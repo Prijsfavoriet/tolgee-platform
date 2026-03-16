@@ -2,17 +2,20 @@
 FROM node:20-alpine AS webapp-build
 WORKDIR /app
 
-# 1. Copy the entire project first so Vite can see /library and /e2e
+# 1. Copy the entire project
 COPY . .
 
-# 2. Go into webapp to install and build
+# 2. Go into webapp
 WORKDIR /app/webapp
 RUN npm ci --ignore-scripts
 
 # 3. BYPASS: Remove Enterprise Frontend logic
 RUN rm -rf src/ee
 
-# 4. Run the build (Vite will now find /library/tsconfig.json)
+# 4. FIX: Create the missing branch.json file so the build doesn't crash
+RUN echo '{"branch": "main", "hash": "self-hosted"}' > src/branch.json
+
+# 5. Run the build
 RUN npm run build
 
 # --- STAGE 2: Build the Server (Backend) ---
