@@ -13,7 +13,6 @@ import { OrganizationMembersView } from './members/OrganizationMembersView';
 import { OrganizationProfileView } from './OrganizationProfileView';
 import { useOrganization } from './useOrganization';
 import { OrganizationAppsView } from './apps/OrganizationAppsView';
-import { routes } from 'tg.ee';
 
 const SpecificOrganizationRouter = () => {
   const organization = useOrganization();
@@ -43,7 +42,6 @@ const SpecificOrganizationRouter = () => {
           <PrivateRoute path={LINKS.ORGANIZATION_APPS.template}>
             <OrganizationAppsView />
           </PrivateRoute>
-          <routes.Organization />
         </>
       ) : (
         <Box
