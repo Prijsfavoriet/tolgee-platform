@@ -5,35 +5,34 @@ WORKDIR /webapp
 # Copy package files
 COPY webapp/package.json webapp/package-lock.json ./
 
-# CRITICAL FIX: Add --ignore-scripts to skip the broken "prepare" tasks
+# 1. Install dependencies ignoring broken "prepare" scripts
 RUN npm ci --ignore-scripts
 
-# Now copy the rest of the webapp source
+# 2. Copy source and delete EE UI logic (the "bypass")
 COPY webapp .
-
-# Manually delete the EE folder if it was copied
 RUN rm -rf src/ee
 
-# Run the build (using the flag to skip scripts if needed)
-RUN npm run build:production
+# 3. Run the standard production build
+RUN npm run build
 
 # --- STAGE 2: Build the Server (Backend) ---
 FROM eclipse-temurin:21-jdk-alpine AS server-build
 WORKDIR /server
 COPY . .
-# BYPASS: Remove Enterprise Backend logic
+# 4. Delete EE Backend logic (the "bypass")
 RUN rm -rf ee
-# Build the JAR without EE modules
+# 5. Build the JAR specifically excluding EE modules
 RUN ./gradlew :server:bootJar -PexcludeEE=true
 
 # --- STAGE 3: Final Runtime Image ---
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 RUN apk --no-cache add curl
+
+# 6. Copy assets from previous stages
 COPY --from=webapp-build /webapp/dist /app/public
 COPY --from=server-build /server/server/build/libs/*.jar /app/tolgee.jar
 
 ENV SPRING_PROFILES_ACTIVE=prod
 EXPOSE 8080
-# No VOLUME /data here to ensure Railway compatibility
 ENTRYPOINT ["java", "-jar", "/app/tolgee.jar"]
