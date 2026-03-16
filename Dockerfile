@@ -25,7 +25,7 @@ COPY . .
 # 4. Delete EE Backend logic (the "bypass")
 RUN rm -rf ee
 # 5. Build the JAR specifically excluding EE modules
-RUN ./gradlew :server:bootJar -PexcludeEE=true
+RUN ./gradlew :server:bootJar -PexcludeEE=true --no-daemon
 
 # --- STAGE 3: Final Runtime Image ---
 FROM eclipse-temurin:21-jre-alpine
