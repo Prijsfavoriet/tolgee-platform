@@ -12,9 +12,6 @@ RUN apk --no-cache add libxml2
 # Expose application port
 EXPOSE 8080
 
-# Define persistent volume for data storage
-VOLUME /data
-
 # Environment variables for configuration
 ENV HEALTHCHECK_PORT=8080 \
     spring_profiles_active=docker
