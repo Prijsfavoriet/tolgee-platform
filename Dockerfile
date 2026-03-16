@@ -5,16 +5,13 @@ COPY . .
 WORKDIR /app/webapp
 RUN npm ci --ignore-scripts
 
-# 1. Delete the real Enterprise code
+# 1. Ensure the real EE folder is gone
 RUN rm -rf src/ee
 
-# 2. Recreate the folder and add a dummy component to satisfy React
+# 2. THE FIX: Create a dummy index.ts to satisfy React Error #152
 RUN mkdir -p src/ee && echo "export const ee = null; export default function MockEE() { return null; }" > src/ee/index.ts
 
-# 3. Add the dummy branch info
 RUN echo '{"branchName": "main", "hash": "self-hosted"}' > src/branch.json
-
-# 4. Build the frontend
 RUN npm run build
 
 # --- STAGE 2: Build the Server (Backend) ---
