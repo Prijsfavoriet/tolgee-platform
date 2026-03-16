@@ -1,18 +1,18 @@
 # --- STAGE 1: Build the Webapp (Frontend) ---
 FROM node:20-alpine AS webapp-build
-WORKDIR /webapp
+WORKDIR /app
 
-# Copy package files
-COPY webapp/package.json webapp/package-lock.json ./
+# 1. Copy the entire project first so Vite can see /library and /e2e
+COPY . .
 
-# 1. Install dependencies ignoring broken "prepare" scripts
+# 2. Go into webapp to install and build
+WORKDIR /app/webapp
 RUN npm ci --ignore-scripts
 
-# 2. Copy source and delete EE UI logic (the "bypass")
-COPY webapp .
+# 3. BYPASS: Remove Enterprise Frontend logic
 RUN rm -rf src/ee
 
-# 3. Run the standard production build
+# 4. Run the build (Vite will now find /library/tsconfig.json)
 RUN npm run build
 
 # --- STAGE 2: Build the Server (Backend) ---
