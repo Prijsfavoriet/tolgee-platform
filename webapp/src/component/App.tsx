@@ -9,7 +9,6 @@ import { SensitiveOperationAuthDialog } from './SensitiveOperationAuthDialog';
 import { Ga4Tag } from './Ga4Tag';
 import { useGlobalContext } from 'tg.globalContext/GlobalContext';
 import { globalContext } from 'tg.globalContext/globalActions';
-import { GlobalLimitPopover } from 'tg.ee';
 
 const GlobalConfirmation = () => {
   const state = useGlobalContext((c) => c.confirmationDialog);
@@ -68,7 +67,6 @@ export class App extends React.Component {
           <Ga4Tag />
           <RootRouter />
           <GlobalConfirmation />
-          <GlobalLimitPopover />
         </MandatoryDataProvider>
       </>
     );
